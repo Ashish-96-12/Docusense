@@ -1,0 +1,23 @@
+# DocuSense Configuration
+chunking:
+  chunk_size: 500  # Number of words per chunk
+  chunk_overlap: 50  # Overlap between chunks
+
+retrieval:
+  top_k: 6  # Number of chunks to retrieve
+  min_score: 0.1  # Minimum BM25 score threshold
+
+summarization:
+  max_sentences: 3  # Maximum sentences in summary
+  algorithm: textrank  # Summarization algorithm
+
+storage:
+  corpus_dir: storage/corpus
+  chunks_dir: storage/chunks
+  indices_dir: storage/indices
+  logs_dir: storage/logs
+
+api:
+  title: DocuSense RAG System
+  version: 1.0.0
+  port: 8000

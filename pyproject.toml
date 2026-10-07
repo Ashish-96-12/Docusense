@@ -1,0 +1,18 @@
+[project]
+name = "docusense"
+version = "2.0.0"
+description = "Chat with your documents: hybrid BM25 + vector retrieval with cited answers from Claude, OpenAI or a local model."
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+ignore = ["B008"]  # FastAPI's Depends()/File() defaults are intended

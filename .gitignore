@@ -2,12 +2,13 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+.env
 .idea/
 .vscode/
 .DS_Store
+.pytest_cache/
+.ruff_cache/
 
-# Runtime data created by the app (sample docs in storage/corpus stay tracked)
-storage/indices/
-storage/chunks/
-storage/logs/
-storage/metadata.json
+# Runtime data (sample docs in data/samples stay tracked)
+data/store/
+eval/results.json

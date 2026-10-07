@@ -1,0 +1,16 @@
+{"question": "Which streaming tools are used to process real-time vehicle data?", "doc": "cloud_mobility_proposal.pdf", "relevant": ["Kafka", "Pub/Sub"], "answer_keywords": ["Kafka", "Kinesis"], "style": "keyword"}
+{"question": "What blockchain technologies secure EV energy transactions?", "doc": "cloud_mobility_proposal.pdf", "relevant": ["Hyperledger"], "answer_keywords": ["Ethereum", "Hyperledger"], "style": "keyword"}
+{"question": "Which tools are used to build predictive maintenance models?", "doc": "cloud_mobility_proposal.pdf", "relevant": ["Predictive maintenance models"], "answer_keywords": ["SageMaker", "TensorFlow", "PyTorch"], "style": "keyword"}
+{"question": "Which regulations must automotive companies comply with?", "doc": "cloud_mobility_proposal.pdf", "relevant": ["GDPR"], "answer_keywords": ["GDPR", "CCPA"], "style": "keyword"}
+{"question": "How will users and connected vehicles be authenticated?", "doc": "cloud_mobility_proposal.pdf", "relevant": ["Identity and Access Management"], "answer_keywords": ["IAM"], "style": "keyword"}
+{"question": "Which services power the voice assistants inside the car?", "doc": "cloud_mobility_proposal.pdf", "relevant": ["AWS Lex"], "answer_keywords": ["Lex", "Dialogflow"], "style": "keyword"}
+{"question": "Where is historical fleet data stored for long-term analysis?", "doc": "cloud_mobility_proposal.pdf", "relevant": ["Timestream"], "answer_keywords": ["Timestream", "InfluxDB"], "style": "keyword"}
+{"question": "How does the design keep services running if a region goes down?", "doc": "cloud_mobility_proposal.pdf", "relevant": ["disaster recovery"], "answer_keywords": ["multi-region", "MultiAZ"], "style": "paraphrase"}
+{"question": "How can electric cars sell leftover power back to the electricity network?", "doc": "cloud_mobility_proposal.pdf", "relevant": ["sell excess energy", "V2G"], "answer_keywords": ["grid"], "style": "paraphrase"}
+{"question": "What hardware lets self-driving cars react fast without waiting on the cloud?", "doc": "cloud_mobility_proposal.pdf", "relevant": ["NVIDIA Jetson"], "answer_keywords": ["Jetson"], "style": "paraphrase"}
+{"question": "How are ride-hailing demand spikes predicted?", "doc": "cloud_mobility_proposal.pdf", "relevant": ["demand forecasting"], "answer_keywords": ["SageMaker", "BigQuery", "Big Query"], "style": "paraphrase"}
+{"question": "Which library does DocuSense v1 use for named entity recognition?", "doc": "docusense_v1_design.pdf", "relevant": ["spaCy"], "answer_keywords": ["spaCy"], "style": "keyword"}
+{"question": "What does the compliance module do?", "doc": "docusense_v1_design.pdf", "relevant": ["policy scan"], "answer_keywords": ["Regex", "policy"], "style": "keyword"}
+{"question": "Why does keeping processing offline matter?", "doc": "docusense_info.txt", "relevant": ["never leave"], "answer_keywords": ["privacy", "never leave", "sensitive"], "style": "paraphrase"}
+{"question": "Which file formats can DocuSense read?", "doc": "docusense_info.txt", "relevant": ["DOCX"], "answer_keywords": ["PDF", "DOCX"], "style": "keyword"}
+{"question": "What is the recipe for chocolate chip cookies?", "doc": null, "relevant": [], "answer_keywords": [], "style": "unanswerable"}

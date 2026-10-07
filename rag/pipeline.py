@@ -66,7 +66,7 @@ class RagPipeline:
         context = "\n\n".join(h["text"] for h in hits)
 
         # Generate answer using TextRank summarization
-        answer = textrank_summary(context, max_sentences=3)
+        answer = textrank_summary(context, max_sentences=3, query=query)
 
         return answer, hits
 
@@ -76,3 +76,12 @@ class RagPipeline:
         if doc_id in self.document_metadata:
             del self.document_metadata[doc_id]
             self.save_metadata()
+
+    def get_stats(self) -> Dict[str, Any]:
+        """Basic counts about what's been ingested"""
+        return {
+            "num_documents": len(self.document_metadata),
+            "num_indexed_documents": len(self.idx.indices),
+            "total_chunks": sum(len(c) for c in self.idx.chunks_store.values()),
+            "documents": [m.get("filename") for m in self.document_metadata.values()],
+        }

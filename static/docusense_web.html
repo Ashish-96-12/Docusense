@@ -122,7 +122,7 @@ cat > static/docusense_web.html << 'EOF'
 
     <script>
         let currentSession = null;
-        const API_URL = 'http://localhost:8000';
+        const API_URL = window.location.protocol.startsWith('http') ? window.location.origin : 'http://localhost:8000';
 
         document.getElementById('fileInput').addEventListener('change', async (e) => {
             const file = e.target.files[0];

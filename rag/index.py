@@ -3,7 +3,20 @@ import json
 import pickle
 from typing import List, Dict, Any
 from rank_bm25 import BM25Okapi
+import re
 import numpy as np
+
+_TOKEN_RE = re.compile(r"[a-z0-9]+")
+_STOPWORDS = {
+    "a", "an", "the", "is", "are", "was", "were", "be", "of", "to", "in", "on",
+    "for", "and", "or", "it", "this", "that", "what", "how", "why", "does", "do",
+    "with", "as", "by", "at", "from", "about",
+}
+
+
+def tokenize(text: str) -> List[str]:
+    """Lowercase, strip punctuation and drop very common words."""
+    return [t for t in _TOKEN_RE.findall(text.lower()) if t not in _STOPWORDS]
 
 
 class IndexManager:
@@ -60,7 +73,7 @@ class IndexManager:
         self.chunks_store[doc_id] = enhanced_chunks
 
         # Create BM25 index for this document
-        tokenized_chunks = [chunk["text"].lower().split() for chunk in enhanced_chunks]
+        tokenized_chunks = [tokenize(chunk["text"]) for chunk in enhanced_chunks]
         self.indices[doc_id] = BM25Okapi(tokenized_chunks)
 
         # Save to disk
@@ -83,12 +96,24 @@ class IndexManager:
         if doc_id not in self.indices or doc_id not in self.chunks_store:
             return []
 
-        tokenized_query = query.lower().split()
+        tokenized_query = tokenize(query)
+        if not tokenized_query:
+            return []
         bm25 = self.indices[doc_id]
         chunks = self.chunks_store[doc_id]
 
         # Get BM25 scores
-        scores = bm25.get_scores(tokenized_query)
+        scores = np.asarray(bm25.get_scores(tokenized_query), dtype=float)
+
+        # BM25 IDF goes to zero or negative when a document has very few
+        # chunks (a short doc becomes one chunk), so nothing would ever score
+        # above 0. Fall back to simple query-term overlap in that case.
+        if not np.any(scores > 0):
+            query_terms = set(tokenized_query)
+            scores = np.array([
+                len(query_terms & set(tokenize(c["text"]))) / len(query_terms)
+                for c in chunks
+            ], dtype=float)
 
         # Get top-k indices
         top_indices = np.argsort(scores)[::-1][:top_k]

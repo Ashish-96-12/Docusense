@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.idea/
+.vscode/
+.DS_Store
+
+# Runtime data created by the app (sample docs in storage/corpus stay tracked)
+storage/indices/
+storage/chunks/
+storage/logs/
+storage/metadata.json

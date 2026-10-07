@@ -350,7 +350,7 @@
     <script>
         class DocuSenseApp {
             constructor() {
-                this.baseUrl = 'http://localhost:8000';
+                this.baseUrl = window.location.protocol.startsWith('http') ? window.location.origin : 'http://localhost:8000';
                 this.uploadedDocuments = [];
                 this.initializeEventListeners();
                 this.autoResizeTextarea();

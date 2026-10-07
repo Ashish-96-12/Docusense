@@ -1,4 +1,5 @@
 from fastapi import FastAPI, UploadFile, File, Request, HTTPException
+from fastapi.responses import FileResponse
 from rag.pipeline import RagPipeline
 import os
 import yaml
@@ -14,6 +15,12 @@ PIPE = RagPipeline(CFG)
 
 # Store active document sessions
 ACTIVE_SESSIONS: Dict[str, str] = {}
+
+
+@app.get("/")
+async def index():
+    """Serve the web UI"""
+    return FileResponse(os.path.join(os.path.dirname(os.path.abspath(__file__)), "docusense_web.html"))
 
 
 @app.post("/ingest")

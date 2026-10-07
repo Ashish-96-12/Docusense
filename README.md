@@ -114,7 +114,7 @@ Follow-up questions work too: pass earlier turns in `history`, and short follow-
 
 ## Evaluation
 
-`eval/questions.jsonl` has 16 labeled questions over the sample documents: keyword-style questions, paraphrased ones that share few words with the source text, and one question the documents can't answer.
+`eval/questions.jsonl` has 14 labeled questions over the sample documents: keyword-style questions, paraphrased ones that share few words with the source text, and one question the documents can't answer.
 
 ```bash
 python -m eval.run_eval                       # compare bm25 / vector / hybrid
